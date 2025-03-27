@@ -22,7 +22,7 @@ CREATE TABLE rakamin-kf-analytics-454009.kimia_farma.tabel_analisis AS
 /*
 The CREATE TABLE statement can be added after we have succesfully collected all
 requested columns and tested our query whether it has satisfied our requirements.
-/*/
+*/
 
 SELECT transaction_id, date, 
   transaksi.branch_id, info_cabang.branch_name,
@@ -38,7 +38,7 @@ SELECT transaction_id, date,
      WHEN transaksi.price BETWEEN 300000 AND 500000 THEN 25/100
      WHEN transaksi.price >= 500000 THEN 30/100
      ELSE null
-     END AS persentase_gross_laba,
+     END AS persentase_gross_laba, transaksi.price,
       (transaksi.price - (transaksi.price * discount_percentage)) AS nett_sales,
     #from the line above, we need to subtract the original price with discounted price to receive the actual sold products price
 
